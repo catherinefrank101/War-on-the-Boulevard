@@ -1,4 +1,575 @@
-# This workflow uses actions that are not certified by GitHub.
+
+
+how do i use these instructions wihout the desktop version Skip to main content
+CollectionBuilder logo with fancy brackets
+CollectionBuilder
+CollectionBuilder Docs
+Templates
+Walkthroughs
+Sheets Walkthrough
+GH Walkthrough
+CSV Walkthrough
+Creating Object Derivatives
+Updating Metadata
+Software
+Repository
+Objects
+Metadata
+Site Config
+Theme Options
+Page Config
+Edit Pages
+Deploy
+Advanced
+Accessibility
+Glossary
+Change Log
+Extras
+Too Quick Start
+Search CollectionBuilder Documentation
+CollectionBuilder on GitHub
+Walkthroughs	CSV Walkthrough
+CollectionBuilder-CSV Walkthrough
+This walkthrough provides steps for creating an example digital collection using preexisting demo metadata from the University of Idaho’s Psychiana Digital Collection, the CollectionBuilder-CSV Template, and the GitHub Actions feature.
+
+Important Note: You will need to install free, open-source software on your computer and create a free GitHub account for this walkthrough.
+
+Video Option: If you would prefer to move through a video version of this walkthrough, check out our YouTube Playlist or click on the video version of each step linked below.
+
+1. Create a GitHub account. (Video Version)
+If you don’t have an account, visit GitHub and click the Sign up button. You do not need a paid account for using CollectionBuilder. After signing up, check your email to verify your account.
+2. Download and install software on your computer (Git, GitHub Desktop, Visual Studio Code, Ruby, Jekyll, ImageMagic and Ghostscript) (Video Version)
+Click on the links below to our documentation for detailed help with the installation process for each piece of free, open-source software:
+
+Install Git
+Install GitHub Desktop
+Install Visual Studio Code (VS Code)
+Install Ruby
+Install Jekyll
+Install ImageMagick and Ghostscript (Optional: You only need this software if you want to create object derivatives)
+In our documentation we’ve tried to anticipate common issues to help with troubleshooting, but if these options do not work, try Googling your problem using a specific search (include the error message you are getting!).
+
+If you are still having problems installing software, please feel free to reach out to the CollectionBuilder team at collectionbuilder.team@gmail.com.
+
+3. Create a new repository (Video Version)
+After ensuring you are logged in to your GitHub account, visit the collectionbuilder-csv repository page.
+
+Click the green Use this template button and then the Create a new repository dropdown option.
+
+User clicking on use template button and then create a new repository option
+
+Leave the repository as Public. Enter a repository name (use a lowercase name without spaces or odd characters, e.g. demo-repository) and click Create repository from template.
+User entering a repository name and clicking create repository from template button
+
+4. Clone your repository using GitHub Desktop (Video Version)
+On your new repository’s home page, click on the green button labeled Code. In the box that pops up, click on the button labeled Open with GitHub Desktop. This action will open GitHub Desktop on your computer.
+User clicking on Code dropdown and then the Open with GitHub Desktop button
+
+GitHub Desktop will ask you to confirm the path of the repository you are cloning. Once you click the blue Clone button, GitHub Desktop will create a new folder on your computer with the matching your repository name and clone the contents of the repository from GitHub.
+User clicking on the clone button in GitHub Desktop to clone the repository from GitHub
+
+Note: The repository is a folder of files and you can store it anywhere, but we recommend using the default storage location on your computer: documents/GitHub.
+A quick explanation of Fetch, Pull, and Push: On the top right of GitHub Desktop, you can Fetch origin, Pull origin, or Push origin. Clicking these commands allows you to sync the local version of your repository with the version on GitHub, using Git to push and pull changes between them.
+
+Reminder: When you are working on multiple computers or collaborating with others, be sure to fetch and pull changes from GitHub before you start working on your project.
+GitHub Desktop user clicking on fetch origin button and then pull origin button
+
+5. Use GitHub Desktop to open your repository in VS Code (Video Version)
+Check to make sure you are in the correct repository by viewing the top left section of GitHub Desktop. To switch between repositories, locate the Current Repository dropdown, and select the repository you’d like to open.
+
+In the top menu, locate and click on Repository, and select the option, Open in Visual Studio Code.
+
+GitHub Desktop user clicking on Repository and then Open in Visual Studio Code option
+
+Alternatively, in the box that says Open the repository in your external editor, you can click the button that says Open in Visual Studio Code.
+GitHub Desktop user clicking on Open in Visual Studio Code button to open VS Code application
+
+6. Add your objects to your repository directly (if necessary) (Video Version)
+Important! The demo metadata for this walkthrough already contains links to external objects (e.g., image files, PDFs, mp3s, etc.) in the object_location, image_small, and image_thumb fields, so you do not need to add any object files directly to the repository in VS Code.
+
+If you want to get started right away with building a collection site using the demo metadata, continue to Step 7 of this walkthrough.
+
+Interested in learning how to add object files directly to your repository? If so, you can check out our Object Derivatives Walkthrough. This walkthrough also reviews how to generate thumb and small object derivatives using CollectionBuilder-CSV’s built-in rake tasks and how to update your metadata spreadsheet to include these derivatives.
+
+For more information on the object_location field, visit our Object Location Fields documentation which covers how to use the correct file paths or URLs for your objects.
+
+7. Prepare your metadata for upload (Video Version)
+Make a copy of this Google Sheet of pre-made demo metadata: Psychiana Digital Collection Metadata
+
+Download the spreadsheet as a .csv file by clicking File → Download → Comma Separated Values (.csv)
+
+Google Sheets user clicking on File, Download, and Comma Separated Values to download metadata as a csv file.
+
+Locate the file in the Downloads folder on your computer.
+Warning: Do not open the CSV file to avoid issues with Microsoft Excel scrambling your UTF-8 encoding. Excel cannot correctly export a CSV for use with CollectionBuilder. It’s super annoying! We know!
+
+Without opening the file, rename it using all lowercase letters, no spaces, and no special characters. For example: “demo-repository.csv”
+8. Upload your metadata file (Video Version)
+In VS Code, click on the “_data” folder.
+Visual Studio Code user clicks on the Data folder to expand it
+
+Navigate to the location of your saved metadata CSV (probably in your Downloads folder or on the Desktop), and select the file.
+
+Drag the file into the “_data” folder on VS Code.
+
+User clicking on metadata file and dragging it into the data folder on Visual Studio Code
+
+Note: The folders and files in the left side of the VS Code interface work like any other folder and file on your computer – you can drag things in there as you’d like.
+9. Commit your changes using VS Code (Video Version)
+In VS Code, click on the Source Control icon, i.e. the network icon on the left side, or press Ctrl + Shift + G.
+Visual Studio Code user clicks on the Source Control icon
+
+Changed files will be listed under Changes. Hover over the file name and click on the plus icon to add individual files, or hover next to Changes and click on the plus icon to add all. Once added, the files will move to a new list called Staged Changes which are ready to commit.
+Tip: Hovering over icons on VS Code will pop up more information about what they represent.
+
+Click in the text box at the top labeled Message. Type your commit message into the box (e.g. Add metadata).
+
+Click the blue Commit button below the message box to commit the change.
+
+Visual Studio Code user stages a change by clicking the plus sign, types in a commit message, and then presses the commit button
+
+10. Configure your site settings in the _config.yml file (Video Version)
+In VS Code, click on the “_config.yml” file.
+
+Under the COLLECTION SETTINGS section, replace the metadata placeholder text with the filename of your uploaded metadata file without the CSV extension.
+
+For example:
+
+metadata: demo-repository
+Visual Studio Code user changes metadata placeholder text to the filename of their metadata file
+
+Under the SITE SETTINGS section, replace the title placeholder text with a title of your choice.
+For example:
+
+title: Demo Repository
+Visual Studio Code user changes title placeholder text to the title of their site
+
+Optional: Write a new tagline, description, and author.
+Note: To view more information about the _config.yml file and what it can change in your site, check out our Site Config documentation.
+
+Save your changes with Ctrl + S or by clicking File → Save.
+
+Follow the same instructions (from Step 9) to commit your changes in VS Code. Your commit message might be something like, “Update site settings.”
+
+11. Open the terminal in VS Code (Video Version)
+In VS Code, open the terminal by clicking on Terminal in the top menu bar and then New Terminal.
+Visual Studio Code user opens a new terminal by clicking on Terminal and then New Terminal
+
+12. Run the “bundle install” command (only necessary for your first time working on a project) (Video Version)
+The first time you work on a project in VS Code on a computer, type the command bundle install into the terminal and then press enter. This will enable you to generate your site on your computer.
+
+You will see a bunch of output in your terminal window. Once the Bundler installation is complete, your terminal prompt will return (which ends in a percentage sign %).
+
+Visual Studio Code user runs the bundle install command in the terminal
+
+13. Run the “bundle exec jekyll serve” command to generate your site (Video Version)
+The bundle exec jekyll serve command starts a development server on your local computer and “serves” (i.e. makes available) the HTML, CSS, and JavaScript files that comprise your website. These files are built (and rebuilt) in the “_site” folder.
+Note: After the development server is started, Jekyll will rebuild the website each time you save a change to a file in the project folder. Learn more about the jekyll serve command in our Generate Your Site documentation.
+
+In the terminal in VS Code, type the command bundle exec jekyll s and press enter.
+
+You’ll see some text appear (messages from Jekyll), including a URL that appears after the title Server address:. The server address will typically start with: http://127.0.0.1:4000/.
+
+Visual Studio Code user runs the bundle exec jekyll serve command in the terminal
+
+Hold down Ctrl / Command and click the server address link to open the site in your browser, or copy the URL and paste it into a browser.’
+Visual Studio Code clicks on the server address link to open the site in their browser
+
+After you start the server, note that whenever you make a change to a file and save it, the terminal will note that it rebuilt the site in a certain amount of seconds.
+
+Important note: If you make a change to the “_config.yml” file, that change won’t be reflected until you restart the server because that file is only referenced when the development site is first built.
+
+To restart the build, end the current session with Ctrl + C, and then run the bundle exec jekyll s command in the terminal again. (Pro Tip: Push the up arrow key in your terminal to automatically retype the last command you entered). Click on the server address once it is ready and the changes should be live.
+
+When you’re ready to end your Jekyll session, type Ctrl + C into the terminal. This stops the server from running.
+
+14. Add a featured homepage image (Video Version)
+Visit your site and use the Browse page to view potential featured images.
+User clicks the Browse button to look through collection images
+
+To find the objectid for an image, click on the image title and then check the end of the URL of the item page. The URL will include the objectid after /items/.
+For example:
+
+For the URL, http://127.0.0.1:4000/items/psychiana005.html, the objectid is psychiana005.
+
+User highlights the objectid at the end of the item page URL
+
+Tip: It is best to choose a large horizontal image if possible.
+
+In VS Code, click on the “_data” folder. Then click on the “theme.yml” file.
+
+Under the HOME PAGE section, replace the objectid placeholder text with the objectid of an image in the collection that you want to be the top image on the homepage.
+
+For example:
+
+featured-image: psychiana005
+Visual Studio code user updates the featured image in the theme.yml file
+
+Save your changes with Ctrl + S or by clicking File → Save.
+
+After you have updated the featured image, write your commit message (e.g. Add featured image) and follow the instructions (from Step 9) to commit your changes.
+
+View your changes by refreshing your site in your browser window.
+
+User refreshes the site to see the new featured home page image
+
+Want to learn more about customization options? Check out our Theme Configuration documentation to find out how to customize other site display options by editing the theme.yml file. For further info on customizations, see: Configuring and Customizing Pages, Theme Color Configuration, and Adding Custom CSS.
+
+15. Optional: Edit the About Page (Video Version)
+In VS Code, click on the “pages” folder. Then click on the “about.md” file.
+
+Try writing some text in this file using Markdown.
+
+New to Markdown? Learn about what Markdown is and check out some learning resources on our Markdown glossary page.
+
+Practice using example code from our Feature Includes Bonanza page.
+
+Save your changes with Ctrl + S or by clicking File → Save.
+
+Follow the same instructions (from Step 9) to commit your changes in VS Code. Your commit message might be something like, “Update the About page.”
+
+View your changes by refreshing your site in your browser window.
+
+16. Prep your repository for publishing with GitHub Actions (Video Version)
+In this walkthrough, you will be hosting your site on GitHub Pages by setting up an alternative build using the GitHub Actions feature. Before using GitHub Actions, you have to prepare your repository for this build process.
+
+In VS Code, open your “_config.yml” file. In the URL VARIABLES section, update the url and baseurl values following this pattern:
+
+URL: https://username.github.io
+baseurl: /repository-name
+For example:
+
+URL: https://juliastone0729.github.io
+baseurl: /demo-repository
+Visual Studio Code user types in new URL variables in the config.yml file
+
+Save your changes with Ctrl + S or by clicking File → Save.
+
+Follow the same instructions (from Step 9) to commit your changes in VS Code. Your commit message might be something like, “Update URL variables.”
+
+Another option for deploying your site: If you have your own server for hosting your site, you can build the site with Jekyll and then move the files to your web server. This allows for the publishing of CollectionBuilder sites on your own or your organization’s web servers. Read our Building Your Site documentation for more info.
+
+17. Push your changes to GitHub using VS Code (Video Version)
+To Push all your committed local changes up to GitHub, click on the Source Control icon, i.e. the network icon on the left side, or press Ctrl + Shift + G.
+
+Then click the blue Sync Changes button. This will sync your local changes with the GitHub repository.
+
+Visual Studio Code user clicks the blue sync changes button to push changes to GitHub
+
+18. Publish your site using GitHub Actions (Video Version)
+Visit github.com and log into your account.
+
+Navigate to your repository. Click the Settings tab in the top right and then click Pages in the left side menu.
+
+GitHub user clicks on Settings and then Pages in the left side menu
+
+On the Pages page, under Source, click the dropdown and select GitHub Actions.
+GitHub user clicks on Source dropdown and then selects GitHub Actions
+
+Warning: Some accounts may have GitHub Actions disabled by default. If you do not see the Actions tab in your repository’s navigation (in between Discussions and Projects), it will need to be turned on first. Visit the repository’s Settings, click on Actions in the left side nav menu, select Allow all actions, and click Save.
+
+Below the Source dropdown, a box will appear under Use a suggested workflow titled Jekyll. Click the Configure button.
+GitHub user clicks on the Configure button below the Source dropdown
+
+This will open an editor page creating a new file named “.github/workflows/jekyll.yml” populated with GitHub’s starter Jekyll workflow.
+
+You can ignore the file and other options displayed on the right side, and just click the green Commit changes… button.
+
+Write a commit message (e.g., Deploy site) and click the green Commit changes button.
+
+GitHub user clicks on the Commit changes button and deploys the site
+
+Committing the action file to your repository will start the build process. It may take a few minutes for it to complete.
+Troubleshooting: If a red “X” appears next to your commit, the build failed, and your updates will not be deployed – the last working version of the site will still be live. Visit the Actions tab to see detailed information about the error to help debug the issue. If the site was building fine on your local computer, this will be unlikely to occur!
+
+Once the action successfully completes, your site will be live. To find the URL you can visit Settings and then Pages.
+GitHub user clicks on Settings and then Pages to find the live URL
+
+Click on the link to see your published site.
+
+Going forward, each time you push or directly commit to the repository, GitHub Actions will rebuild the live site.
+
+19. Explore potential next steps
+Your collection website is complete! To implement additional customization options, your next steps could be:
+
+Customizing your theme options
+
+Configuring your pages
+
+Adding more pages
+
+If you want to get into more Advanced Options, you could explore:
+
+Including a TimelineJS feature
+
+Creating new cloud pages
+
+And more advanced options!
+
+Back to top
+
+Edit this page on GitHub
+
+This site uses Just the Docs, a documentation theme for Jekyll.
+
+You can build a CollectionBuilder site without installing the desktop software (GitHub Desktop, VS Code, Ruby, etc.). Instead, you can do everything directly inside the GitHub website interface. This works well for projects like yours where you already have images and a metadata CSV.
+
+Below is the simpler “no-desktop” method that adapts those instructions to GitHub web only.
+
+How to Use CollectionBuilder Without Desktop Software
+1. Create the repository from the template
+Go to the template repository:
+https://github.com/CollectionBuilder/collectionbuilder-csv
+
+Click Use this template
+
+Click Create a new repository
+
+Name it something simple like:
+
+punk-archive
+Set it to Public
+
+Click Create repository
+
+You now have a CollectionBuilder project already set up.
+
+2. Upload your metadata CSV
+In your repository:
+
+Click the folder _data
+
+Click Add file
+
+Click Upload files
+
+Upload your metadata CSV file
+
+Example:
+
+punk_metadata.csv
+Then click Commit changes.
+
+3. Tell CollectionBuilder to use your metadata
+Now edit the configuration.
+
+Open the file _config.yml
+
+Click the pencil icon (edit)
+
+Find this line:
+
+metadata:
+Change it to the name of your CSV without .csv
+
+Example:
+
+metadata: punk_metadata
+Then click Commit changes.
+
+4. Upload your images
+Open the objects folder
+
+Click Add file
+
+Click Upload files
+
+Upload all your images
+
+Example:
+
+bay_area_punk_flyers_8161_7_1.jpg
+cometbus_4_8107_box_4_4.jpg
+Commit changes.
+
+Important:
+Your metadata identifier or object_location field must match the file names.
+
+5. Turn on GitHub Pages
+Go to Settings
+
+Click Pages on the left
+
+Under Source, choose:
+
+GitHub Actions
+6. Enable the Jekyll workflow
+GitHub will suggest a Jekyll workflow.
+
+Click:
+
+Configure
+Then click:
+
+Commit changes
+This will automatically build the site.
+
+7. Wait for the site to deploy
+Go to the Actions tab.
+
+You will see the build running.
+
+When it finishes, your site will be live at:
+
+https://YOURUSERNAME.github.io/REPOSITORYNAME
+Example:
+
+https://pbsail.github.io/punk-archive
+What You Actually Need (No Desktop)
+You only need:
+
+GitHub account
+
+Metadata CSV
+
+Image files
+
+Browser
+
+You do NOT need:
+
+GitHub Desktop
+
+VS Code
+
+Ruby
+
+Jekyll
+
+Terminal commands
+
+GitHub Actions builds everything automatically.
+
+For Your Project (Important)
+Since you are using multiple punk collections, the most reliable setup is:
+
+One combined metadata CSV
+
+Example:
+
+punk_collection_metadata.csv
+containing:
+
+Bay Area flyers
+
+Cometbus
+
+DC Hardcore
+
+Gretchen Phillips
+
+etc.
+
+Then upload all images to /objects/.
+
+If you want, I can also show you
+The exact folder structure your repository should have
+
+The 3 most common reasons CollectionBuilder metadata fails
+
+How to make your map coordinates work in CollectionBuilder
+
+These will probably fix the issues you were having with metadata not loading earlier.
+
+
+Annotations
+1 error and 3 warnings
+build
+Process completed with exit code 1.
+build
+Node.js 20 actions are deprecated. The following actions are running on Node.js 20 and may not work as expected: actions/checkout@v4, actions/configure-pages@v5, ruby/setup-ruby@4a9ddd6f338a97768b8006bf671dfbad383215f4. Actions will be forced to run with Node.js 24 by default starting June 2nd, 2026. Please check if updated versions of these actions are available that support Node.js 24. To opt into Node.js 24 now, set the FORCE_JAVASCRIPT_ACTIONS_TO_NODE24=true environment variable on the runner or in your workflow file. Once Node.js 24 becomes the default, you can temporarily opt out by setting ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+build
+Failed to save: <h2>Our services aren't available right now</h2><p>We're working to restore all services as soon as possible. Please check back soon.</p>02DSxaQAAAAB21lIo5W7LRLKHrC54XBtqRE0yRURHRTA3MTgARWRnZQ==
+build
+Failed to restore: Cache service responded with 400
+
+
+Thought for 9s
+The Node.js 20 message is only a warning. It did not cause your build to fail. The failure came from GitHub’s services/cache layer:
+
+Failed to save: Our services aren't available right now
+
+Failed to restore: Cache service responded with 400
+
+Those errors point to a GitHub Actions / cache service problem, not a problem with your metadata file itself. GitHub has also announced the Node 20 deprecation timeline, but that warning is separate from the immediate failure. 
+
+What to do right now:
+
+Re-run the workflow first.
+Because the log says GitHub services were unavailable, the fastest fix is often just to run it again. Temporary Actions/cache outages have caused similar failures for other users. 
+
+If it fails again, disable caching in the workflow.
+Open .github/workflows/jekyll.yml and look for any cache-related behavior. If your workflow includes a cache step or dependency caching, remove it temporarily. Cache-related failures with 400/422 errors have been reported, and disabling cache is a common workaround. 
+
+Do not worry about the Node 20 warning yet.
+GitHub says Node 20 actions are being deprecated and runners will move to Node 24, but the warning alone does not stop the build. 
+
+If the workflow keeps failing, reset Pages once.
+In your repo:
+
+Settings → Pages
+
+change Source away from GitHub Actions if possible, save
+
+switch back to GitHub Actions
+
+then rerun the deployment
+A GitHub community workaround for Pages build issues is to disable/re-enable Pages or the deployment workflow. 
+
+Here is the part that matters most for you:
+
+Your error does not look like “bad CSV formatting” or “wrong _config.yml metadata name.” It looks like GitHub failed during the build infrastructure step. If you want, paste your .github/workflows/jekyll.yml file here and I’ll tell you exactly what to delete or edit so it works for CollectionBuilder.
+
+
+how do i Add GitHub Actions workflow for Jekyll deployment #1
+
+
+Thought for 8s
+To add the GitHub Actions workflow for Jekyll deployment directly on the GitHub website:
+
+Open your repository on GitHub.
+
+Click Settings.
+
+In the left sidebar, click Pages.
+
+Under Build and deployment, set Source to GitHub Actions. GitHub says this is the recommended approach for Jekyll deployments. 
+
+After that, GitHub should show suggested workflows.
+
+In the suggested workflows area, find Jekyll.
+
+Click Configure.
+
+GitHub will open a new file called something like .github/workflows/jekyll.yml.
+
+You do not need to write the file from scratch. Just click Commit changes to add it to your repository. Once committed, that workflow will start the Pages build/deploy process. 
+
+Then check the deployment:
+
+Click the Actions tab to watch the workflow run.
+
+When it finishes successfully, go back to Settings → Pages and GitHub will show your live site URL there. 
+
+For your CollectionBuilder repo, also make sure _config.yml has the right values before expecting the site to build correctly:
+
+url: https://YOURUSERNAME.github.io
+baseurl: /YOUR-REPOSITORY-NAME
+metadata: your_csv_filename_without_csv
+Those values are what CollectionBuilder uses for the site URL and metadata file hookup, and Jekyll reads _config.yml for site configuration. 
+
+If the Jekyll button does not appear:
+
+go to Settings → Actions → General
+
+allow GitHub Actions for the repository
+
+then return to Settings → Pages and try again. GitHub notes that Pages publishing with Actions requires Actions to be enabled. 
+
+If you want, paste your current repo name and GitHub username, and I’ll write the exact _config.yml lines you should use.
+
+
+what is wrong here: # This workflow uses actions that are not certified by GitHub.
 # They are provided by a third-party and are governed by
 # separate terms of service, privacy policy, and support
 # documentation.
@@ -63,3 +634,555 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+
+Thought for 8s
+Nothing is obviously wrong with the YAML structure itself. Your workflow is basically the standard GitHub Pages Jekyll workflow: it checks out the repo, sets up Ruby, configures Pages, builds Jekyll into _site, uploads the Pages artifact, and deploys it. GitHub’s Pages docs use this same overall pattern. 
+
+What is actually standing out is this line in your earlier logs:
+
+bundler-cache: true
+
+That setting tells ruby/setup-ruby to automatically run bundle install and use the GitHub Actions cache. In your case, the earlier failure messages were:
+
+Failed to save: Our services aren't available right now
+
+Failed to restore: Cache service responded with 400
+
+So the workflow itself is probably fine, but the cache step is what is breaking the build, not Jekyll syntax. 
+
+What to change
+Edit this section:
+
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@4a9ddd6f338a97768b8006bf671dfbad383215f4
+        with:
+          ruby-version: '3.1'
+          bundler-cache: true
+          cache-version: 0
+to this:
+
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.1'
+          bundler-cache: false
+
+      - name: Install gems
+        run: bundle install
+Why this helps
+This does two useful things:
+
+It turns off the cache layer that appears to be failing in your logs.
+
+It switches from a pinned commit hash to @v1, which is simpler to manage in a normal student/project repo.
+
+Also important
+The Node.js 20 deprecation warning is not the main error. It is a warning about future runner behavior, not the thing that caused exit code 1. Your actual failure was tied to GitHub’s save/restore cache services. 
+
+Best cleaned-up version
+Try this full workflow:
+
+name: Deploy Jekyll site to Pages
+
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.1'
+          bundler-cache: false
+
+      - name: Install gems
+        run: bundle install
+
+      - name: Setup Pages
+        id: pages
+        uses: actions/configure-pages@v5
+
+      - name: Build with Jekyll
+        run: bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}"
+        env:
+          JEKYLL_ENV: production
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+One more thing to check
+Even with the workflow fixed, CollectionBuilder will still fail if your repo config is wrong. Make sure _config.yml has:
+
+url: https://YOURUSERNAME.github.io
+baseurl: /YOUR-REPOSITORY-NAME
+metadata: your_csv_filename_without_csv
+That part is separate from the workflow, but it is the next most common reason the site still does not load correctly after deployment.
+
+Paste your _config.yml next, and I’ll check the exact line that is breaking CollectionBuilder.
+
+
+where do i find yaml
+
+You will find the YAML file in your GitHub repository, not on your computer.
+
+There are actually two YAML files you may see in a CollectionBuilder project.
+
+1. The workflow YAML (the one you posted)
+Location in your repository:
+
+.github/workflows/jekyll.yml
+How to find it
+Open your repository on GitHub
+
+Click the folder:
+
+.github
+Click the folder:
+
+workflows
+Click the file:
+
+jekyll.yml
+You will see the YAML workflow you pasted earlier.
+
+To edit it:
+
+Click the pencil icon
+
+Edit
+
+Click Commit changes
+
+2. The CollectionBuilder config YAML (VERY important)
+This is actually the file that controls your site settings and metadata.
+
+Location:
+
+_config.yml
+How to find it
+Open your repository and look in the top level.
+
+Example repository structure:
+
+repository-name
+│
+├── _config.yml
+├── _data
+├── objects
+├── pages
+├── _layouts
+└── _includes
+Click:
+
+_config.yml
+Then click the pencil icon to edit.
+
+What you need to check in _config.yml
+Make sure these lines exist and are correct:
+
+url: https://YOURUSERNAME.github.io
+baseurl: /REPOSITORYNAME
+metadata: your_csv_filename
+Example:
+
+url: https://pbsail.github.io
+baseurl: /punk-archive
+metadata: punk_metadata
+Important:
+
+Do NOT include .csv
+
+The CSV must be inside the _data folder
+
+Where your metadata CSV must be
+_data/punk_metadata.csv
+Where your images must be
+objects/
+Example:
+
+objects/bay_area_punk_flyers_8161_7_1.jpg
+objects/cometbus_4_8107_box_4_4.jpg
+✅ If you want, paste or screenshot your repository file list, and I can immediately tell you exactly why your CollectionBuilder site isn’t building. This usually takes about 10 seconds to diagnose.
+
+
+how do i efit the workflow yml
+
+You edit the workflow YAML (jekyll.yml) directly on GitHub. You do not need any software installed.
+
+Follow these exact steps:
+
+How to Edit the Workflow YAML on GitHub
+1. Open your repository
+Go to your repository page on GitHub.
+
+Example structure you should see:
+
+your-repo
+│
+├ _config.yml
+├ _data
+├ objects
+└ .github
+2. Open the workflow folder
+Click the folder:
+
+.github
+Then click:
+
+workflows
+3. Open the workflow file
+Click the file:
+
+jekyll.yml
+This is the GitHub Actions workflow that builds your CollectionBuilder site.
+
+4. Click the edit button
+In the top right of the file click the pencil icon ✏️
+
+That allows you to edit the YAML.
+
+5. Edit the code
+Make the changes you want to the workflow.
+
+For example you might replace the Ruby setup section with:
+
+- name: Setup Ruby
+  uses: ruby/setup-ruby@v1
+  with:
+    ruby-version: '3.1'
+    bundler-cache: false
+
+- name: Install gems
+  run: bundle install
+6. Save the changes
+Scroll to the bottom and click:
+
+Commit changes
+Add a message like:
+
+Fix workflow build
+Then click Commit changes again.
+
+7. Watch the build run
+Now go to the Actions tab at the top of your repository.
+
+You should see:
+
+Deploy Jekyll site to Pages
+Click it to watch the build.
+
+If it finishes successfully your site will deploy automatically.
+
+If the workflow file doesn't exist
+You can create it manually:
+
+Go to .github/workflows
+
+Click Add file
+
+Click Create new file
+
+Name it:
+
+jekyll.yml
+Then paste the workflow code.
+
+✅ If you want, paste your repository URL or screenshot of the file structure, and I can immediately tell you the exact reason your CollectionBuilder site is failing to deploy. This is usually one of 3 small issues.
+
+
+what is wrong here: 
+  5
+  6
+  7
+  8
+  9
+ 10
+ 11
+ 12
+ 13
+ 14
+ 15
+ 16
+ 17
+ 18
+ 19
+ 20
+ 21
+ 22
+ 23
+ 24
+ 25
+ 26
+ 27
+ 28
+ 29
+ 30
+ 31
+ 32
+ 33
+ 34
+ 35
+ 36
+ 37
+ 38
+ 39
+ 40
+ 41
+ 42
+ 43
+ 44
+ 45
+ 46
+ 47
+ 48
+ 49
+ 50
+ 51
+ 52
+ 53
+ 54
+ 55
+ 56
+ 57
+ 58
+ 59
+ 60
+ 61
+ 62
+ 63
+ 64
+ 65
+ 66
+
+That is just the line-number column, not the actual code.
+
+You likely copied from the left side of the GitHub file editor, so what you pasted is only:
+
+line 5
+
+line 6
+
+line 7
+
+etc.
+
+There is nothing wrong with those numbers themselves. The problem is that the actual YAML text did not get copied.
+
+Do this instead:
+
+Open jekyll.yml
+
+Drag-select the code on the right, not the numbers on the left
+
+Copy and paste the actual text here
+
+Or click into the file and copy everything from something like:
+
+name: Deploy Jekyll site to Pages
+down to the bottom.
+
+If you want, paste a screenshot of the whole jekyll.yml page and I’ll point to exactly what to edit.
+
+
+This workflow uses actions that are not certified by GitHub.
+# They are provided by a third-party and are governed by
+# separate terms of service, privacy policy, and support
+# documentation.
+
+# Sample workflow for building and deploying a Jekyll site to GitHub Pages
+name: Deploy Jekyll site to Pages
+
+on:
+  # Runs on pushes targeting the default branch
+  push:
+    branches: ["main"]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
+# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  # Build job
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Ruby
+        # https://github.com/ruby/setup-ruby/releases/tag/v1.207.0
+        uses: ruby/setup-ruby@4a9ddd6f338a97768b8006bf671dfbad383215f4
+        with:
+          ruby-version: '3.1' # Not needed with a .ruby-version file
+          bundler-cache: true # runs 'bundle install' and caches installed gems automatically
+          cache-version: 0 # Increment this number if you need to re-download cached gems
+      - name: Setup Pages
+        id: pages
+        uses: actions/configure-pages@v5
+      - name: Build with Jekyll
+        # Outputs to the './_site' directory by default
+        run: bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}"
+        env:
+          JEKYLL_ENV: production
+      - name: Upload artifact
+        # Automatically uploads an artifact from the './_site' directory by default
+        uses: actions/upload-pages-artifact@v3
+
+  # Deployment job
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+
+The file itself is mostly fine. The main problem in your case is likely this part:
+
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@4a9ddd6f338a97768b8006bf671dfbad383215f4
+        with:
+          ruby-version: '3.1'
+          bundler-cache: true
+          cache-version: 0
+Because your earlier error was about cache restore/save failing, bundler-cache: true is probably what is causing the build to break.
+
+What to change
+Replace your whole file with this:
+
+name: Deploy Jekyll site to Pages
+
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.1'
+          bundler-cache: false
+
+      - name: Install gems
+        run: bundle install
+
+      - name: Setup Pages
+        id: pages
+        uses: actions/configure-pages@v5
+
+      - name: Build with Jekyll
+        run: bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}"
+        env:
+          JEKYLL_ENV: production
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+What was wrong
+There are three things worth noting:
+
+bundler-cache: true
+This is the big one. Your earlier logs showed cache failures, so turning this off is the safest fix.
+
+Pinned Ruby action hash
+You have:
+
+uses: ruby/setup-ruby@4a9ddd6f338a97768b8006bf671dfbad383215f4
+That is not invalid, but it is harder to manage. @v1 is simpler.
+
+The warning at the top
+The text:
+
+This workflow uses actions that are not certified by GitHub.
+is just a warning/comment, not the actual build error.
+
+How to edit it on GitHub
+Open your repo
+
+Open .github
+
+Open workflows
+
+Open jekyll.yml
+
+Click the pencil icon
+
+Delete the old code
+
+Paste the corrected code above
+
+Click Commit changes
+
+Then go to Actions and rerun the workflow.
+
+The next thing to check after this is your _config.yml, because if the workflow starts working but the site is still wrong, the issue is usually the metadata: line or baseurl:.
+
+
+
+
